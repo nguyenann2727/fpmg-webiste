@@ -1,12 +1,14 @@
 # Foundry Private Markets Group website
 
-Production-ready static website for Foundry Private Markets Group at Southern Methodist University. The site is a single, build-free HTML file and is compatible with GitHub Pages.
+Production-ready static website for Foundry Private Markets Group at Southern Methodist University. The site is a single, build-free HTML file deployed with Cloudflare Workers Static Assets.
 
 ## Repository structure
 
 ```text
 .
+├── .assetsignore
 ├── index.html
+├── wrangler.jsonc
 └── fpmg-assets/
     └── team/
         ├── carson-kudelko.jpg
@@ -53,14 +55,23 @@ The current deadline is intentionally blank, so recruitment stays open until an 
 
 Event registration posts directly to FormSubmit at `smuprivatemarketsgroup@gmail.com`. The form requires an `@smu.edu` address, opens FormSubmit in a new tab, and refuses submission from `file://` pages. The first production submission may require the club inbox to activate FormSubmit.
 
-## GitHub Pages deployment
+## Cloudflare Workers deployment
 
-1. Push the repository to GitHub with `index.html` at the repository root.
-2. Open **Settings → Pages** in the GitHub repository.
-3. Choose **Deploy from a branch**, select `main`, and select the repository root (`/`).
-4. Verify the generated HTTPS URL on desktop and mobile.
+The current production Worker and GitHub repository are both named `fpmg-webiste`. The spelling must remain consistent until a coordinated rename is approved.
 
-Hash routing (`#/team`, `#/events`, and `#/join`) works under a GitHub Pages project subpath without rewrite rules.
+Cloudflare Workers Builds is configured with:
+
+- Production branch: `main`
+- Build command: none
+- Deploy command: `npx wrangler deploy`
+- Root directory: `/`
+- Static asset directory: repository root (`.`)
+
+`wrangler.jsonc` is the source-controlled Workers Static Assets configuration. `.assetsignore` prevents repository metadata, Wrangler state, documentation, and temporary files from being published as web assets.
+
+Every push to `main` triggers a production deployment. Verify the apex custom domain, the Worker URL, `/#/join`, and all team images after each deployment.
+
+Hash routing (`#/team`, `#/events`, and `#/join`) works without server-side rewrite rules because URL fragments are handled in the browser.
 
 ## Release integrity
 
@@ -82,4 +93,4 @@ Before enabling the public production URL:
 - Confirm permission to publish all six member photos and remove EXIF metadata if required by club policy.
 - Add production-domain metadata (`canonical`, `og:url`, and a public `og:image`) after the final domain is known.
 
-No real Google Form submission, FormSubmit submission, GitHub push, or production deployment was performed while preparing this repository.
+Do not submit the Google Form or FormSubmit registration as part of routine deployment verification without separate authorization.

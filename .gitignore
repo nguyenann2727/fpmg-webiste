@@ -1,5 +1,7 @@
 .DS_Store
 .fpmg-preview/
+.wrangler/
+node_modules/
 tmp/
 *.log
 *.tmp

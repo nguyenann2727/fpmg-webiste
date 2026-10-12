@@ -1,0 +1,6 @@
+.DS_Store
+.fpmg-preview/
+tmp/
+*.log
+*.tmp
+*.swp

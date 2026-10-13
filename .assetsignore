@@ -4,6 +4,8 @@
 .assetsignore
 .fpmg-preview
 .fpmg-preview/**
+local-editor
+local-editor/**
 .wrangler
 .wrangler/**
 node_modules

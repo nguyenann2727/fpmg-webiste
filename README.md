@@ -7,8 +7,12 @@ Production-ready static website for Foundry Private Markets Group at Southern Me
 ```text
 .
 ├── .assetsignore
+├── README.md
 ├── index.html
 ├── wrangler.jsonc
+├── local-editor/
+│   ├── README.md
+│   └── editor-overlay.js
 └── fpmg-assets/
     └── team/
         ├── carson-kudelko.jpg
@@ -29,13 +33,26 @@ python3 -m http.server 8765 --bind 127.0.0.1
 
 Then open `http://127.0.0.1:8765/`.
 
+### Direct visual editing
+
+When the site is opened from `file://`, `localhost`, or `127.0.0.1`, a local
+**Chỉnh sửa** toolbar appears at the bottom of the page. It supports inline text
+editing, team-photo replacement, hero-background replacement, and logo
+replacement. **Lưu bản nháp** stores changes only in that browser; ask Codex to
+apply the saved draft to source and deploy it when the edits are ready.
+
+The production HTML contains no editor toolbar or `contenteditable` markup. A
+strict protocol/hostname guard loads the overlay only on `file://`, `localhost`,
+or `127.0.0.1`; `.assetsignore` also excludes `local-editor/` from Cloudflare
+uploads. Public visitors therefore receive no editing controls.
+
 ## Membership application configuration
 
 The production configuration is centralized in `APPLICATION_CONFIG` inside `index.html`:
 
 ```javascript
 var APPLICATION_CONFIG=Object.freeze({
-  formUrl:'https://forms.gle/Wan1e75dWhoez9t6A',
+  formUrl:'https://forms.gle/eTCvtC9Q15wakFLW7',
   deadline:'',
   recruitmentStatus:'open',
   timezone:'America/Chicago',
@@ -73,12 +90,24 @@ Every push to `main` triggers a production deployment. Verify the apex custom do
 
 Hash routing (`#/team`, `#/events`, and `#/join`) works without server-side rewrite rules because URL fragments are handled in the browser.
 
+### Production release procedure
+
+1. Serve the repository locally and verify `#/`, `#/team`, `#/events`, and `#/join`.
+2. Confirm saved local-editor content has been applied to `index.html`.
+3. Run `git diff --check`, review `git diff`, and commit `.assetsignore`,
+   `README.md`, `index.html`, and `local-editor/` together.
+4. Push `main`; Cloudflare Workers Builds deploys the commit automatically.
+5. Verify `https://foundryprivatemarketsgroup.org/` and the Worker URL.
+6. Confirm `/local-editor/editor-overlay.js` returns `404`, the live DOM has no
+   `#fpmg-editor-toolbar` or `[contenteditable]`, and Apply opens the configured
+   Google Form in a new tab.
+
 ## Release integrity
 
-Production snapshot prepared on 2026-10-11:
+Production snapshot prepared on 2026-10-13:
 
 ```text
-index.html  8d513de3fc3beea83929d051693f4443b74988f9d7102766beaa9e008e417655
+index.html  637465e91f8d64ed36a5b570dd5c8133845190d260aa692b0dd9704568bdc8ff
 ```
 
 ## Release checklist
@@ -91,6 +120,6 @@ Before enabling the public production URL:
 - Confirm the club inbox has activated FormSubmit and complete one authorized staging registration test.
 - Confirm whether the public Instagram handle should remain `foundry_smu` or change to `fpmg_smu`.
 - Confirm permission to publish all six member photos and remove EXIF metadata if required by club policy.
-- Add production-domain metadata (`canonical`, `og:url`, and a public `og:image`) after the final domain is known.
+- Add a dedicated public social-sharing image and configure `og:image` when an approved asset is available.
 
 Do not submit the Google Form or FormSubmit registration as part of routine deployment verification without separate authorization.

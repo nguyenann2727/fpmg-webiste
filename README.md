@@ -107,7 +107,7 @@ Hash routing (`#/team`, `#/events`, and `#/join`) works without server-side rewr
 Production snapshot prepared on 2026-10-13:
 
 ```text
-index.html  637465e91f8d64ed36a5b570dd5c8133845190d260aa692b0dd9704568bdc8ff
+index.html  2da99f10d7e0cbf9651283274ba88585acc42babf8e626489cfbf3bf754b3775
 ```
 
 ## Release checklist

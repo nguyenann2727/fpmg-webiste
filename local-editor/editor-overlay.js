@@ -9,10 +9,17 @@
   var defaults=textNodes.map(nodeValue),photos=[].slice.call(d.querySelectorAll('.photo')),hero=d.getElementById('photo'),logo=d.querySelector('.brand img');
   var imageDefaults={hero:hero?hero.src:'',logo:logo?logo.src:''},images={},pickTarget=null,toastTimer=null;
   var LEGACY_TEXT={
-    'Founding member, VP of Finance':'Founder, VP of Finance',
-    'Founding member, VP of Club Affairs':'Founder, VP of Club Affairs',
-    'Founding member, VP of Marketing Manager':'Founder, Marketing Manager',
-    'Founding member, VP of Technical & Operations':'Founder, VP of Technical & Operations',
+    'Founder, VP of Finance':'Founding Member, VP of Finance',
+    'Founding member, VP of Finance':'Founding Member, VP of Finance',
+    'Founder, VP of External Affairs':'Founding Member, VP of External Affairs',
+    'Founding member, VP of External Affairs':'Founding Member, VP of External Affairs',
+    'Founder, VP of Club Affairs':'Founding Member, VP of Club Affairs',
+    'Founding member, VP of Club Affairs':'Founding Member, VP of Club Affairs',
+    'Founder, Marketing Manager':'Founding Member, Marketing Manager',
+    'Founding member, Marketing Manager':'Founding Member, Marketing Manager',
+    'Founding member, VP of Marketing Manager':'Founding Member, Marketing Manager',
+    'Founder, VP of Technical & Operations':'Founding Member, VP of Technical & Operations',
+    'Founding member, VP of Technical & Operations':'Founding Member, VP of Technical & Operations',
     'Chris Marmo PHD Speaker':'Chris Marmo, PhD — Guest Speaker'
   };
   photos.forEach(function(photo,index){imageDefaults['team-'+index]=photo.dataset.defaultImage||''});

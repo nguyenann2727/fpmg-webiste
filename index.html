@@ -133,7 +133,20 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .photo.has{color:transparent}
 .member .role{white-space:normal;overflow:visible;line-height:1.35;min-height:2.7em;text-wrap:balance}
 .member h3{font-size:1.2rem}
-.members-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.team-layout{max-width:1440px;padding:48px 28px 72px}
+.board-panel{max-width:1040px;margin:0 auto}
+.analysts-panel{margin-top:40px}
+.analysts-panel .sub2{margin:0;font-size:1.5rem;letter-spacing:.12em;color:var(--ink)}
+.members-grid{grid-template-columns:repeat(5,minmax(0,1fr));gap:20px;margin-top:28px;grid-auto-rows:1fr}
+.members-grid .member{min-width:0}
+.members-grid .info{padding:18px 16px 22px}
+.members-grid h3{font-size:1.125rem;line-height:1.3;min-height:2.6em;overflow-wrap:break-word}
+.members-grid .role{min-height:0;margin:8px 0 12px;font-size:.9rem}
+.members-grid .meta,.members-grid .bio{font-size:1rem;line-height:1.55}
+.members-grid .meta{min-height:3.1em}
+.members-grid .bio{margin-top:12px}
+@media (max-width:1199px){.members-grid{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:auto}}
+@media (max-width:640px){.team-layout{padding:28px 16px 48px}.analysts-panel{margin-top:24px}.members-grid h3,.members-grid .meta{min-height:0}}
 .members-grid .photo{overflow:hidden}
 .members-grid .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--headshot-position,center 20%)}
 .members-grid .photo img.richard-headshot{transform:scale(1.6);transform-origin:center 37%}
@@ -223,7 +236,7 @@ dialog button.btn.ghost{background:transparent;color:var(--ink);border-color:var
     <div class="glass cta reveal"><h2 class="stmt">Ready to learn the private markets?</h2><a class="btn primary is-disabled" href="#" data-link="apply" aria-disabled="true" tabindex="-1" aria-label="Apply Now — applications are closed">Apply Now</a></div>
   </div>
 </section>
-<section class="page" data-page="team" aria-labelledby="team-title" tabindex="-1"><div class="wrap inner"><div class="glass">
+<section class="page" data-page="team" aria-labelledby="team-title" tabindex="-1"><div class="wrap inner team-layout"><div class="glass board-panel">
 <h1 class="page-title" id="team-title" tabindex="-1">Our team</h1><p class="lead">Meet the students who run the club.</p>
 <p class="sub2">Executive board</p><div class="team">
   <article class="member reveal"><div class="photo" aria-hidden="true" data-default-image="fpmg-assets/team/james-joseph.jpg">JJ</div><div class="info"><h3>James Joseph</h3><div class="role">Founder, President</div><div class="meta">Finance</div><p class="bio">BBA Scholar at SMU Cox School of Business.</p></div></article>
@@ -234,7 +247,8 @@ dialog button.btn.ghost{background:transparent;color:var(--ink);border-color:var
   <article class="member reveal"><div class="photo" aria-hidden="true" data-default-image="fpmg-assets/team/quoc-an-nguyen.jpg">QN</div><div class="info"><h3>Quoc An Nguyen</h3><div class="role">Founding Member, VP of Technical &amp; Operations</div><div class="meta">Finance and Data Science.</div><p class="bio">SMU Cox School of Business.</p></div></article>
 </div>
 
-<section id="analysts" aria-labelledby="analysts-title">
+</div>
+<section class="glass analysts-panel" id="analysts" aria-labelledby="analysts-title">
   <h2 class="sub2" id="analysts-title">Analysts</h2>
   <div class="team members-grid">
     <article class="member reveal">
@@ -332,7 +346,7 @@ dialog button.btn.ghost{background:transparent;color:var(--ink);border-color:var
   </div>
 </section>
 
-</div></div></section>
+</div></section>
 <section class="page" data-page="events" aria-labelledby="events-title" tabindex="-1"><div class="wrap inner"><div class="glass">
 <h1 class="page-title" id="events-title" tabindex="-1">Events</h1><p class="lead">Open to all students unless noted.</p>
 <div class="event featured reveal ended" id="james-thomason-2026-11-16" data-status="end" data-tz="America/Chicago" data-location="Cox School of Business - DMBQ 1315">

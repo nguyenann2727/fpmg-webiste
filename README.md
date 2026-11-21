@@ -54,7 +54,7 @@ The production configuration is centralized in `APPLICATION_CONFIG` inside `inde
 var APPLICATION_CONFIG=Object.freeze({
   formUrl:'https://forms.gle/eTCvtC9Q15wakFLW7',
   deadline:'',
-  recruitmentStatus:'open',
+  recruitmentStatus:'closed',
   timezone:'America/Chicago',
   clubEmail:'smuprivatemarketsgroup@gmail.com'
 });
@@ -66,7 +66,13 @@ var APPLICATION_CONFIG=Object.freeze({
 - An empty or invalid deadline does not close applications.
 - An empty or invalid form URL displays the Coming Soon state and disables both Apply buttons.
 
-The current deadline is intentionally blank, so recruitment stays open until an official date is supplied or `recruitmentStatus` is changed to `closed`.
+Recruitment is currently closed. The Apply status reads `Close` with a red dot and both Apply buttons are disabled. The deadline remains blank; reopening requires an explicit configuration update.
+
+## November 2026 content update
+
+The Team page includes ten Analysts below the six existing Executive Board profiles. Profile text and photos come from the verified `foundry-10-members-update.zip`; Shrey Shori retains the supplied temporary headshot.
+
+The James Thomason guest speaker event took place on November 16, 2026, at Cox School of Business – DMBQ 1315. It is archived with `data-status="end"`, displays `end`, and offers no registration or calendar action. Its date is stored without a time because no event time was provided. Previously concluded events also display `end`.
 
 ## Event registration
 
@@ -99,8 +105,8 @@ Hash routing (`#/team`, `#/events`, and `#/join`) works without server-side rewr
 4. Push `main`; Cloudflare Workers Builds deploys the commit automatically.
 5. Verify `https://foundryprivatemarketsgroup.org/` and the Worker URL.
 6. Confirm `/local-editor/editor-overlay.js` returns `404`, the live DOM has no
-   `#fpmg-editor-toolbar` or `[contenteditable]`, and Apply opens the configured
-   Google Form in a new tab.
+   `#fpmg-editor-toolbar` or `[contenteditable]`, and the Apply status, red dot, and disabled Apply buttons reflect the closed
+   recruitment configuration.
 
 ## Release integrity
 

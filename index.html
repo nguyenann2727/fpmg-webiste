@@ -133,6 +133,12 @@ footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
 .photo.has{color:transparent}
 .member .role{white-space:normal;overflow:visible;line-height:1.35;min-height:2.7em;text-wrap:balance}
 .member h3{font-size:1.2rem}
+.members-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,260px),1fr))}
+.members-grid .photo{overflow:hidden}
+.members-grid .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--headshot-position,center 20%)}
+.members-grid .photo img.richard-headshot{transform:scale(1.6);transform-origin:center 37%}
+.members-grid .photo.has img{visibility:hidden}
+@media (max-width:640px){.members-grid{grid-template-columns:1fr}}
 .event{display:grid;grid-template-columns:104px 1fr auto;gap:28px;align-items:center;margin-top:22px;padding:26px 30px;background:var(--surface);border:1px solid var(--line);border-radius:14px;transition:transform .3s,border-color .3s,box-shadow .3s}
 .event:hover{transform:translateY(-4px);border-color:var(--accent);box-shadow:0 18px 36px -20px rgba(0,0,0,.7)}
 .event .date{padding-right:28px;border-right:1px solid var(--line)}
@@ -150,6 +156,8 @@ footer::after{content:"";position:absolute;left:0;right:0;top:0;height:1px;backg
 .cal:hover,.cal2:hover{color:var(--accent)}
 .ended-badge{display:none;font-size:.78rem;color:var(--muted);border:1px solid var(--line);border-radius:4px;padding:6px 14px;letter-spacing:.08em;text-transform:uppercase}
 .event.ended{opacity:.7}
+.event.ended .ended-badge{display:inline-block}
+.event.ended [data-act=register],.event.ended .cal{display:none}
 footer a{min-height:44px;display:inline-flex;align-items:center;color:inherit;text-decoration:none}footer a:hover{color:var(--ink)}
 dialog{border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:0;background:#0b1424;color:var(--ink);width:min(480px,calc(100vw - 32px));max-height:calc(100svh - 32px);overflow:auto;box-shadow:0 40px 80px -20px rgba(0,0,0,.8)}
 dialog::backdrop{background:rgba(3,6,12,.65);backdrop-filter:blur(6px)}
@@ -212,7 +220,7 @@ dialog button.btn.ghost{background:transparent;color:var(--ink);border-color:var
     <div class="glass reveal"><p class="eyebrow">About Foundry</p><h2 class="stmt" id="about-title" tabindex="-1">Where students learn to invest in private markets.</h2><p class="lead">Foundry Private Markets Group is an SMU student organization for students interested in understanding private-market investing and pursuing careers in private equity, venture capital, private credit, and other alternative investments.</p><p class="lead">We give members practical exposure to how private investments are sourced, analyzed, structured, and presented, through education, case studies, investment analysis, and interaction with industry professionals.</p></div>
     <div class="glass reveal"><p class="eyebrow">What we study</p><div class="areas"><div class="area"><i>01</i><div><h3>Private equity</h3><p>How funds buy, improve and sell companies.</p></div></div><div class="area"><i>02</i><div><h3>Search funds</h3><p>How an entrepreneur raises capital to acquire and run one small business.</p></div></div><div class="area"><i>03</i><div><h3>Venture capital</h3><p>How investors evaluate startups and price early rounds.</p></div></div><div class="area"><i>04</i><div><h3>Private credit</h3><p>How non-bank lenders structure loans directly to companies.</p></div></div></div></div>
     <div class="glass reveal"><p class="eyebrow">The deal lifecycle</p><h2>How a private investment takes shape.</h2><div class="life"><div class="stage"><h3>Sourced</h3><p>Where opportunities come from and how they are screened.</p></div><div class="stage"><h3>Analyzed</h3><p>Financial analysis and valuation of the business.</p></div><div class="stage"><h3>Structured</h3><p>How capital, terms and returns are arranged.</p></div><div class="stage"><h3>Presented</h3><p>Making the investment case to decision-makers.</p></div></div></div>
-    <div class="glass cta reveal"><h2 class="stmt">Ready to learn the private markets?</h2><a class="btn primary" href="#" data-link="apply" target="_blank" rel="noopener noreferrer" aria-disabled="false" aria-label="Apply Now — opens Google Forms in a new tab">Apply Now</a></div>
+    <div class="glass cta reveal"><h2 class="stmt">Ready to learn the private markets?</h2><a class="btn primary is-disabled" href="#" data-link="apply" aria-disabled="true" tabindex="-1" aria-label="Apply Now — applications are closed">Apply Now</a></div>
   </div>
 </section>
 <section class="page" data-page="team" aria-labelledby="team-title" tabindex="-1"><div class="wrap inner"><div class="glass">
@@ -226,19 +234,122 @@ dialog button.btn.ghost{background:transparent;color:var(--ink);border-color:var
   <article class="member reveal"><div class="photo" aria-hidden="true" data-default-image="fpmg-assets/team/quoc-an-nguyen.jpg">QN</div><div class="info"><h3>Quoc An Nguyen</h3><div class="role">Founding Member, VP of Technical &amp; Operations</div><div class="meta">Finance and Data Science.</div><p class="bio">SMU Cox School of Business.</p></div></article>
 </div>
 
+<section id="analysts" aria-labelledby="analysts-title">
+  <h2 class="sub2" id="analysts-title">Analysts</h2>
+  <div class="team members-grid">
+    <article class="member reveal">
+      <div class="photo" style="--headshot-position:center 55%"><img class="richard-headshot" src="fpmg-assets/team/richard-agyeman-yeboah.jpg" alt="Richard Agyeman-Yeboah" loading="lazy"></div>
+      <div class="info">
+        <h3>Richard Agyeman-Yeboah</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Accounting, Specialization in AI</div>
+        <p class="bio">SMU First-Year Senator, SMU Men’s Club Soccer, SMU Athletics Marketing &amp; Fan Experience Intern</p>
+        <p class="bio">Ivy Educational and Charitable Foundation Scholarship, SMU Aspire Scholarship, Mustang Award Scholarship</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/shrey-shori.jpg" alt="Shrey Shori" loading="lazy"></div>
+      <div class="info">
+        <h3>Shrey Shori</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">Gerald J. and Gail Turner Scholar</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/collin-hand.jpg" alt="Collin Hand" loading="lazy"></div>
+      <div class="info">
+        <h3>Collin Hand</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">University Honors Program</p>
+        <p class="bio">Founders’ Scholarship</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/chandler-moir.jpg" alt="Chandler Moir" loading="lazy"></div>
+      <div class="info">
+        <h3>Chandler Moir</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/david-mayo.jpg" alt="David Mayo" loading="lazy"></div>
+      <div class="info">
+        <h3>David Mayo</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">Distinguished Scholar, BBA Scholar</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/andrew-coen.jpg" alt="Andrew Coen" loading="lazy"></div>
+      <div class="info">
+        <h3>Andrew Coen</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">BBA Scholar, Hilltop Scholar, Second Century Scholar</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/sujit-pai.jpg" alt="Sujit Pai" loading="lazy"></div>
+      <div class="info">
+        <h3>Sujit Pai</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance &amp; Economics</div>
+        <p class="bio">Hilltop Scholar, Hegi Career Leader</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo" style="--headshot-position:center 65%"><img src="fpmg-assets/team/jack-w-grace.jpg" alt="Jack W. Grace" loading="lazy"></div>
+      <div class="info">
+        <h3>Jack W. Grace</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">Fall ULI Meeting Scholarship Recipient</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/eli-cunningham.jpg" alt="Eli Cunningham" loading="lazy"></div>
+      <div class="info">
+        <h3>Eli Cunningham</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Business Administration, Undeclared Finance</div>
+        <p class="bio">University Hilltop Scholars Program</p>
+        <p class="bio">Second Century Scholarship, SMU IB Scholarship</p>
+      </div>
+    </article>
+    <article class="member reveal">
+      <div class="photo"><img src="fpmg-assets/team/juan-cuevas.jpg" alt="Juan Cuevas" loading="lazy"></div>
+      <div class="info">
+        <h3>Juan Cuevas</h3>
+        <div class="role">Analyst</div>
+        <div class="meta">Finance</div>
+        <p class="bio">University Honors Program, BBA Scholar</p>
+      </div>
+    </article>
+  </div>
+</section>
+
 </div></div></section>
 <section class="page" data-page="events" aria-labelledby="events-title" tabindex="-1"><div class="wrap inner"><div class="glass">
 <h1 class="page-title" id="events-title" tabindex="-1">Events</h1><p class="lead">Open to all students unless noted.</p>
-<div class="event featured reveal" data-end="2026-10-30T18:30:00-05:00" data-start="20261030T173000" data-endcal="20261030T183000" data-tz="America/Chicago" data-location="Collins Executive Education Building, Southern Methodist University, Dallas, TX" data-details="Join Foundry Private Markets Group for a guest speaker event with Hamiz Awan, Founder of Plutus21."><time class="date" datetime="2026-10-30T17:30:00-05:00"><b>30</b><span>Oct 2026</span></time><div class="ebody"><span class="tag">Guest Speaker</span><h3>Hamiz Awan &mdash; Guest Speaker</h3><p>Founder of Plutus21 &middot; 5:30&ndash;6:30 PM &middot; Collins Executive Education Building, SMU</p></div><div class="eact"><button class="btn" type="button" data-act="register" aria-haspopup="dialog" aria-controls="reg">Register</button><a class="cal" href="#" target="_blank" rel="noopener noreferrer">+ Add to calendar</a><span class="ended-badge">Event ended</span></div></div>
-<div class="event featured reveal" data-end="2026-10-16T18:30:00-05:00" data-start="20261016T173000" data-endcal="20261016T183000" data-tz="America/Chicago" data-location="The Chamber, Hughes-Trigg Student Center, Southern Methodist University, Dallas, TX" data-details="Join Foundry Private Markets Group for a guest speaker event with Chris Marmo, PhD, Founder of Evolus, Inc. (NASDAQ: EOLS)."><time class="date" datetime="2026-10-16T17:30:00-05:00"><b>16</b><span>Oct 2026</span></time><div class="ebody"><span class="tag">Guest Speaker</span><h3>Chris Marmo, PhD &mdash; Guest Speaker</h3><p>Founder of Evolus, Inc. (NASDAQ: EOLS) &middot; 5:30&ndash;6:30 PM &middot; The Chamber, Hughes-Trigg Student Center</p></div><div class="eact"><button class="btn" type="button" data-act="register" aria-haspopup="dialog" aria-controls="reg">Register</button><a class="cal" href="#" target="_blank" rel="noopener noreferrer">+ Add to calendar</a><span class="ended-badge">Event ended</span></div></div>
+<div class="event featured reveal ended" id="james-thomason-2026-11-16" data-status="end" data-tz="America/Chicago" data-location="Cox School of Business - DMBQ 1315">
+  <time class="date" datetime="2026-11-16"><b>16</b><span>Nov 2026</span></time>
+  <div class="ebody"><span class="tag">Guest Speaker</span><h3>James Thomason &mdash; Guest Speaker</h3><p>Founder, Next Wave Partners &middot; Former CTO, Dell</p><p>Author of <em>Venture Capital Without Unicorns</em></p><p>Cox School of Business &ndash; DMBQ 1315</p></div>
+  <div class="eact"><span class="ended-badge">end</span></div>
+</div>
+<div class="event featured reveal ended" data-status="end" data-end="2026-10-30T18:30:00-05:00" data-start="20261030T173000" data-endcal="20261030T183000" data-tz="America/Chicago" data-location="Collins Executive Education Building, Southern Methodist University, Dallas, TX" data-details="Join Foundry Private Markets Group for a guest speaker event with Hamiz Awan, Founder of Plutus21."><time class="date" datetime="2026-10-30T17:30:00-05:00"><b>30</b><span>Oct 2026</span></time><div class="ebody"><span class="tag">Guest Speaker</span><h3>Hamiz Awan &mdash; Guest Speaker</h3><p>Founder of Plutus21 &middot; 5:30&ndash;6:30 PM &middot; Collins Executive Education Building, SMU</p></div><div class="eact"><button class="btn" type="button" data-act="register" aria-haspopup="dialog" aria-controls="reg">Register</button><a class="cal" href="#" target="_blank" rel="noopener noreferrer">+ Add to calendar</a><span class="ended-badge">end</span></div></div>
+<div class="event featured reveal ended" data-status="end" data-end="2026-10-16T18:30:00-05:00" data-start="20261016T173000" data-endcal="20261016T183000" data-tz="America/Chicago" data-location="The Chamber, Hughes-Trigg Student Center, Southern Methodist University, Dallas, TX" data-details="Join Foundry Private Markets Group for a guest speaker event with Chris Marmo, PhD, Founder of Evolus, Inc. (NASDAQ: EOLS)."><time class="date" datetime="2026-10-16T17:30:00-05:00"><b>16</b><span>Oct 2026</span></time><div class="ebody"><span class="tag">Guest Speaker</span><h3>Chris Marmo, PhD &mdash; Guest Speaker</h3><p>Founder of Evolus, Inc. (NASDAQ: EOLS) &middot; 5:30&ndash;6:30 PM &middot; The Chamber, Hughes-Trigg Student Center</p></div><div class="eact"><button class="btn" type="button" data-act="register" aria-haspopup="dialog" aria-controls="reg">Register</button><a class="cal" href="#" target="_blank" rel="noopener noreferrer">+ Add to calendar</a><span class="ended-badge">end</span></div></div>
 </div></div></section>
 <section class="page" data-page="thanks" aria-labelledby="thanks-title" tabindex="-1"><div class="wrap inner"><div class="glass cta"><div class="eyebrow">Registration</div><h1 class="thanks-h" id="thanks-title" tabindex="-1">Check the confirmation tab</h1><div class="lead thanks-lead">Your registration is complete only after FormSubmit displays its confirmation page in the new tab. If no confirmation appeared, return to Events and try again.</div><a class="tback" href="#/events">Back to events</a></div></div></section>
 <section class="page" data-page="join" aria-labelledby="join-title" tabindex="-1"><div class="wrap inner"><div class="glass">
 <h1 class="page-title" id="join-title" tabindex="-1">Join the club</h1>
-<p class="lead">Applications are open this fall. Tell us about your interest in private markets; no prior experience is required.</p>
-<p class="application-state" id="application-state" role="status">Applications Open</p>
-<p class="application-detail" id="application-detail"></p>
-<div class="btns"><a class="btn primary" href="#" data-link="apply" target="_blank" rel="noopener noreferrer" aria-disabled="false" aria-label="Apply Now — opens Google Forms in a new tab">Apply Now</a><a class="btn ghost" href="#" data-link="email">Email us</a><a class="btn ghost" href="#" data-link="linkedin">LinkedIn</a><a class="btn ghost" href="#" data-link="instagram">Instagram</a></div>
+<p class="lead">Applications are currently closed. Please check back for the next recruitment period or email us with questions.</p>
+<p class="application-state closed" id="application-state" role="status">Close</p>
+<p class="application-detail" id="application-detail">Recruitment is currently closed.</p>
+<div class="btns"><a class="btn primary is-disabled" href="#" data-link="apply" aria-disabled="true" tabindex="-1" aria-label="Apply Now — applications are closed">Apply Now</a><a class="btn ghost" href="#" data-link="email">Email us</a><a class="btn ghost" href="#" data-link="linkedin">LinkedIn</a><a class="btn ghost" href="#" data-link="instagram">Instagram</a></div>
 </div></div></section>
 </main>
 <footer><div class="wrap"><span>&copy; 2026 Foundry Private Markets Group, SMU</span><div class="soc"><a href="#" data-link="instagram">Instagram</a><a href="#" data-link="linkedin">LinkedIn</a></div><a href="#" data-link="email"><span>smuprivatemarketsgroup@gmail.com</span></a></div></footer>
@@ -329,7 +440,7 @@ if(bgImg&&bgImg.src!==lastBg){lastBg=bgImg.src;genBlur()}
 var APPLICATION_CONFIG=Object.freeze({
   formUrl:'https://forms.gle/eTCvtC9Q15wakFLW7',
   deadline:'',
-  recruitmentStatus:'open',
+  recruitmentStatus:'closed',
   timezone:'America/Chicago',
   clubEmail:'smuprivatemarketsgroup@gmail.com'
 });
@@ -381,17 +492,18 @@ function refreshLinks(){
     else if(links[t]){a.href=links[t];a.target='_blank';a.rel='noopener noreferrer';a.style.display='';a.setAttribute('aria-label',(a.textContent||t).trim()+' — opens in a new tab')}
     else{a.style.display='none';a.removeAttribute('href');a.removeAttribute('target');a.removeAttribute('rel')}});
   var state=document.getElementById('application-state'),detail=document.getElementById('application-detail');
-  if(state){state.textContent=closed?'Applications Closed':comingSoon?'Applications Coming Soon':'Applications Open';state.classList.toggle('closed',closed);state.classList.toggle('coming-soon',comingSoon)}
+  if(state){state.textContent=closed?'Close':comingSoon?'Applications Coming Soon':'Applications Open';state.classList.toggle('closed',closed);state.classList.toggle('coming-soon',comingSoon)}
   if(detail){if(closed)detail.textContent=manualClosed?'Recruitment is currently closed.':'The application deadline has passed.';
     else if(comingSoon)detail.textContent=(end!==null?'Applications close '+readableDeadline(end)+'. ':'')+'The Google Form link has not been configured yet. Email us with questions.';
     else detail.textContent=end!==null?'Applications close '+readableDeadline(end)+'.':'Complete the membership application in Google Forms.'}
-  document.querySelectorAll('.event[data-end]').forEach(function(ev){
-    var endMs=Date.parse(ev.dataset.end||''),invalid=!Number.isFinite(endMs),over=invalid||Date.now()>endMs,register=ev.querySelector('[data-act=register]'),cal=ev.querySelector('.cal'),badge=ev.querySelector('.ended-badge'),calendar=calUrl(ev);
+  document.querySelectorAll('.event[data-end],.event[data-status="end"]').forEach(function(ev){
+    var archived=ev.dataset.status==='end',endMs=Date.parse(ev.dataset.end||''),invalid=!archived&&!Number.isFinite(endMs),over=archived||invalid||Date.now()>endMs,register=ev.querySelector('[data-act=register]'),cal=ev.querySelector('.cal'),badge=ev.querySelector('.ended-badge'),calendar=calUrl(ev);
     if(register)register.style.display=over?'none':'';if(cal){cal.style.display=over||!calendar?'none':'';if(calendar)cal.href=calendar;cal.setAttribute('aria-label','Add '+((ev.querySelector('h3')||{}).textContent||'event').trim()+' to Google Calendar — opens in a new tab')}
-    if(badge){badge.textContent=invalid?'Registration unavailable':'Event ended';badge.style.display=over?'inline-block':'none'}ev.classList.toggle('ended',over)});
+    if(badge){badge.textContent=invalid?'Registration unavailable':'end';badge.style.display=over?'inline-block':'none'}ev.classList.toggle('ended',over)});
   }
 function openReg(ev){
   if(!ev||!rf||!dlg){toast('Registration is not available for this event.');return}
+  var eventEnd=Date.parse(ev.dataset.end||'');if(ev.dataset.status==='end'||!Number.isFinite(eventEnd)||Date.now()>eventEnd){toast('This event has ended.');return}
   var title=ev.querySelector('h3'),day=ev.querySelector('.date b'),month=ev.querySelector('.date span'),meta=ev.querySelector('.ebody p'),rtitle=document.getElementById('rtitle'),rmeta=document.getElementById('rmeta'),cal2=document.getElementById('cal2'),calendar=calUrl(ev);
   if(!title||!day||!month||!meta||!rtitle||!rmeta||!rf.elements['event']){toast('Registration is not available for this event.');return}
   regMsg('');var t=title.textContent.trim();rtitle.textContent=t;

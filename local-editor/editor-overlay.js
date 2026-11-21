@@ -6,6 +6,10 @@
   var d=document,body=d.body,KEY='fpmg-local-editor-v2:'+(location.pathname||'/'),SCHEMA=2,editing=false;
   var TEXT_SELECTOR='.page h1,.page h2,.page h3,.page p,.page .role,.page .meta,.page .bio,.page .tag,.page .btn,.nums b,.nums span,footer .wrap>span';
   var textNodes=[].slice.call(d.querySelectorAll(TEXT_SELECTOR)).filter(function(node){return !node.matches('.event .date b,.event .date span,.event .ebody p,.application-state,.application-detail')});
+  // Append Analysts and then the new event so existing local drafts keep their text indexes.
+  textNodes=textNodes.filter(function(node){return !node.closest('#analysts,#james-thomason-2026-11-16')})
+    .concat(textNodes.filter(function(node){return node.closest('#analysts')}))
+    .concat(textNodes.filter(function(node){return node.closest('#james-thomason-2026-11-16')}));
   var defaults=textNodes.map(nodeValue),photos=[].slice.call(d.querySelectorAll('.photo')),hero=d.getElementById('photo'),logo=d.querySelector('.brand img');
   var imageDefaults={hero:hero?hero.src:'',logo:logo?logo.src:''},images={},pickTarget=null,toastTimer=null;
   var LEGACY_TEXT={
